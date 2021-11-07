@@ -33,6 +33,10 @@ const sass = () => (
 	 src('./src/scss/style.scss')
 		 .pipe(dartSass().on('error', dartSass.logError))
 		 .pipe(cleanCSS({compatibility: 'ie8'}))
+		 .pipe(gulpStylelint({
+			 fix: true
+		 }))
+
 		 .pipe(autoprefixer({
 			 cascade: false
 		 }))
@@ -73,7 +77,7 @@ const js = () => (
 		.pipe(browserSync.stream())
 )
 
-const sprite = () => (
+const sprite = async () => (
 	src('./src/images/sprite/**/*.svg')
 		.pipe(svgSprite({
 			mode: {
@@ -107,4 +111,4 @@ const watchFiles = () => {
 	watch('./src/fonts/**/*', fonts);
 }
 
-exports.default = series(clean, parallel(fonts, html, sass, images, js, svg, sprite), watchFiles);
+exports.default = series(clean, fonts, html, sass, images, js, svg, sprite, watchFiles);
