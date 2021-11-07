@@ -1,4 +1,4 @@
-const {src, dest, series, watch} = require('gulp'),
+const {src, dest, series, watch, parallel} = require('gulp'),
 	fileInclude = require('gulp-file-include'),
 	dartSass = require('gulp-dart-sass'),
 	autoprefixer = require('gulp-autoprefixer'),
@@ -11,6 +11,8 @@ const {src, dest, series, watch} = require('gulp'),
 	svgSprite = require('gulp-svg-sprite'),
 	concat = require('gulp-concat'),
 	gulpStylelint = require('gulp-stylelint'),
+	uglify = require('gulp-uglify'),
+	htmlmin = require('gulp-htmlmin'),
 	browserSync = require('browser-sync').create();
 
 const html = () => (
@@ -19,38 +21,44 @@ const html = () => (
 		prefix: '@@',
 		basepath: '@file'
 	}))
+		.pipe(htmlmin({
+			collapseWhitespace: true,
+			removeComments: true
+		}))
 		.pipe(dest('dist'))
+		.pipe(browserSync.stream())
 );
 
 const sass = () => (
 	 src('./src/scss/style.scss')
 		 .pipe(dartSass().on('error', dartSass.logError))
-		 .pipe(gulpStylelint({
-			 fix: true
-		 }))
 		 .pipe(cleanCSS({compatibility: 'ie8'}))
 		 .pipe(autoprefixer({
 			 cascade: false
 		 }))
 		 .pipe(rename({suffix: '.min'}))
 		 .pipe(dest('dist/css'))
+		 .pipe(browserSync.stream())
 );
 
 const images = () => (
 	src(['./src/images/**/*.png','./src/images/**/*.jpeg'])
 		.pipe(image())
 		.pipe(dest('dist/images'))
+		.pipe(browserSync.stream())
 );
 
 const svg = async () => {
 	src('./src/images/**/*.svg')
 		.pipe(svgmin())
 		.pipe(dest('dist/images'))
+		.pipe(browserSync.stream())
 }
 
 const fonts = () => (
 	src('./src/fonts/*')
 		.pipe(dest('dist/fonts'))
+		.pipe(browserSync.stream())
 )
 
 const js = () => (
@@ -59,7 +67,10 @@ const js = () => (
 		.pipe(babel({
 			presets: ['@babel/env']
 		}))
+		.pipe(uglify())
+		.pipe(rename({suffix: '.min'}))
 		.pipe(dest('dist/js'))
+		.pipe(browserSync.stream())
 )
 
 const sprite = () => (
@@ -67,11 +78,13 @@ const sprite = () => (
 		.pipe(svgSprite({
 			mode: {
 				stack: {
-					sprite: "../sprite.svg"  //sprite file name
+					sprite: "../sprite.svg"
 				}
 			},
 		}))
 		.pipe(dest('./dist/images/sprite'))
+		.pipe(dest('./src/images/sprite'))
+		.pipe(browserSync.stream())
 )
 
 const clean = () => (
@@ -84,8 +97,9 @@ const watchFiles = () => {
 			baseDir: "./dist"
 		}
 	});
+
 	watch('./src/**/*.html', html);
-	watch('./src/styles/style.sass', sass);
+	watch('./src/scss/**/*', sass);
 	watch(['./src/images/**/*.png','./src/images/**/*.jpeg'], images);
 	watch('./src/images/svg/sprite/**/*.svg', sprite);
 	watch('./src/images/svg/**/*.svg', svg);
@@ -93,4 +107,4 @@ const watchFiles = () => {
 	watch('./src/fonts/**/*', fonts);
 }
 
-exports.default = series(clean, fonts, html, sass, images, js, svg, sprite, watchFiles);
+exports.default = series(clean, parallel(fonts, html, sass, images, js, svg, sprite), watchFiles);
