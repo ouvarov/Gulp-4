@@ -1,4 +1,6 @@
-const {src, dest, series, watch, parallel} = require('gulp'),
+/* eslint-disable */
+
+const {src, dest, series, watch} = require('gulp'),
 	fileInclude = require('gulp-file-include'),
 	dartSass = require('gulp-dart-sass'),
 	autoprefixer = require('gulp-autoprefixer'),
