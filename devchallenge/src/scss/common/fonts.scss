@@ -1,0 +1,18 @@
+$fonts-type: (
+    'Rubik-400',
+    'Rubik-500',
+    'Rubik-300');
+
+@each $font in $fonts-type {
+    @font-face {
+        font-family: $font;
+        font-style: normal;
+        src: url('../fonts/#{$font}.eot');
+        src:
+            url('../fonts/#{$font}.eot?#iefix') format('embedded-opentype'),
+            url('../fonts/#{$font}.woff2') format('woff2'),
+            url('../fonts/#{$font}.woff') format('woff'),
+            url('../fonts/#{$font}.ttf') format('truetype'),
+            url('../fonts/#{$font}.svg##{$font}') format('svg');
+    }
+}

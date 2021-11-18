@@ -1,0 +1,16 @@
+.button {
+    @include font-style($rubik-medium, 14px, $grey-color, 14px);
+    @include button-background($white, $light-grey);
+    padding: $indent ($indent-regular + $indent);
+    text-transform: uppercase;
+    background-color: $white;
+    border-radius: 4px;
+    transform: translateZ(0);
+    transition: .3s;
+
+    &--secondary {
+        @include button-background($blue, $blue);
+        padding: $indent $indent-large;
+        color: $white;
+    }
+}

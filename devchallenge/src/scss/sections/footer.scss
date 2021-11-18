@@ -1,0 +1,93 @@
+.footer {
+    background-color: $background-color-dark;
+
+    &__wrap {
+        @extend %container;
+        @include flex;
+        flex-wrap: wrap;
+        padding: ($indent * 4) 0;
+    }
+    &__certificate {
+        margin: 0;
+        padding: ($indent * 2) 0;
+        color: $text-color-light;
+        text-align: center;
+        background-color: $footer-color;
+    }
+    &__row {
+        width: 100%;
+        max-width: 25%;
+        padding: 0 $indent;
+    }
+    &__headline {
+        margin-bottom: $indent;
+        color: $white;
+    }
+    &__text {
+        color: $text-color-light;
+        &--flex {
+            @include flex($align-items: center);
+            margin: 0;
+        }
+        &--link {
+            &:hover,
+            &:focus {
+                color: $blue;
+            }
+        }
+    }
+    &__socials-wrap {
+        @include flex;
+    }
+    &__social-icon {
+        $icon-type: (
+            'twitter': #5daed5,
+            'facebook': #4470cf,
+            'pinterest': #c53942,
+            'vimeo': #099fc7,
+            'instagram': #d53581
+        );
+
+        margin-right: $indent-regular;
+        background-size: 14px;
+        border-radius: 50%;
+        cursor: pointer;
+        transition: .3s;
+        @each $type, $color in $icon-type {
+            &--#{$type} {
+                background-color: $color;
+            }
+        }
+        &:hover {
+            opacity: .85;
+        }
+    }
+    &__contact-icon {
+        @include size(14px);
+        margin-right: $indent-small;
+    }
+    &__controls-wrap {
+        @include flex;
+        margin-bottom: ($indent-large * 2);
+    }
+    &__input {
+        width: calc(100% - 76px);
+        margin-right: $indent-small;
+    }
+    &__list {
+        color: $text-color-light;
+        list-style-type: disc;
+    }
+
+    @include respond-to(1023) {
+        &__row {
+            max-width: 50%;
+        }
+    }
+    @include respond-to(767) {
+        &__row {
+            max-width: 100%;
+            margin-bottom: $indent;
+        }
+    }
+}

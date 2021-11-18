@@ -1,0 +1,57 @@
+.awesomeness {
+    @include background('bg.jpg');
+    padding-top: 90px;
+    overflow: hidden;
+
+    &__wrap {
+        @extend %container;
+        @include flex(center);
+    }
+    &__figure,
+    &__title,
+    &__button,
+    &__content {
+        @include visibility(hidden, 0);
+        will-change: transform;
+    }
+    &__figure {
+        width: 41.7%;
+        margin-right: ($indent-small * 10);
+        transform: translateY(50px);
+        animation: move-figure 1s ease forwards;
+    }
+    &__title {
+        @include font-style($rubik, 42px, $white, 48px);
+        margin-bottom: $indent-large;
+        transform: translateX(-100px);
+        animation: move-title 1.5s ease forwards;
+        animation-delay: .5s;
+    }
+    &__content {
+        @include font-style($rubik-light, 28px, $white, 38px);
+        margin-bottom: $indent-large;
+        transform: translateX(100px);
+        animation: move-content 1.5s ease forwards;
+        animation-delay: 1s;
+    }
+    &__content-wrap {
+        margin-bottom: ($indent * 10);
+    }
+    &__button {
+        transform: translateY(100px);
+        animation: move-button 1.5s ease forwards;
+        animation-delay: 1.5s;
+    }
+
+    @include respond-to(1023) {
+        &__wrap {
+            flex-direction: column-reverse;
+        }
+        &__figure {
+            width: 55%;
+        }
+        &__content-wrap {
+            margin-bottom: ($indent-large * 2);
+        }
+    }
+}

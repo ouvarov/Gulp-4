@@ -1,0 +1,11 @@
+.carousel-item {
+    padding: 0 $indent;
+
+    &__figure {
+        flex-shrink: 0;
+        width: 165px;
+    }
+    &__img {
+        width: auto;
+    }
+}

@@ -1,0 +1,43 @@
+.about {
+    position: relative;
+
+    &__wrap {
+        @extend %container;
+        @extend %section-indent;
+        @include flex(center, $justify-content: flex-end);
+    }
+    &__figure {
+        @include background('about.jpg');
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 50%;
+        height: 100%;
+    }
+    &__content-wrap {
+        width: 100%;
+        max-width: 41.6%;
+    }
+
+    @include respond-to(1023) {
+        @include flex(center, column);
+        &__figure {
+            position: static;
+            width: 100%;
+            min-height: 400px;
+        }
+        &__wrap {
+            justify-content: center;
+            width: 80%;
+            padding: 0 $indent;
+        }
+        &__content-wrap {
+            max-width: none;
+        }
+    }
+    @include respond-to(767) {
+        &__wrap {
+            width: 100%;
+        }
+    }
+}

@@ -1,0 +1,106 @@
+.header {
+    @include flex(center);
+    position: sticky;
+    top: 0;
+    z-index: $index-extra-higher;
+    height: 83px;
+    background-color: $background-color-dark;
+
+    &__wrap {
+        @extend %container;
+        @include flex(between);
+    }
+    &__logo-wrap {
+        width: 129px;
+        height: 30px;
+    }
+    &__nav-item {
+        @include font-style($rubik-medium, 13px, $white, 13px);
+        @include flex(center);
+        position: relative;
+        margin-left: ($indent-large * 2);
+        text-transform: uppercase;
+        &:hover,
+        &:focus {
+            color: $blue;
+        }
+    }
+    &__nav {
+        @include flex(between);
+        margin-right: $indent;
+    }
+    &__nav-icon {
+        @include size(17px);
+        position: absolute;
+        top: 50%;
+        right: -15px;
+        padding-left: $indent-small;
+        transform: translateY(-50%);
+    }
+    &__label {
+        @include size(26px);
+        display: none;
+        padding: 3px 0;
+        overflow: hidden;
+        cursor: pointer;
+    }
+    &__hamburger-item {
+        display: block;
+        width: 100%;
+        height: 3px;
+        background-color: $white;
+        transition: .3s;
+    }
+    &__checkbox {
+        @include visibility(hidden, 0);
+        &:checked {
+            ~.header {
+                &__nav {
+                    transform: translateY(0);
+                }
+                &__label {
+                    .header {
+                        &__hamburger-item {
+                            &:first-of-type {
+                                transform: rotate(45deg) translate(7px, 5px);
+                            }
+                            &:nth-of-type(2) {
+                                transform: translateX(-150%);
+                            }
+                            &:last-of-type {
+                                transform: rotate(-45deg) translate(7px, -5px);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    @include respond-to(1023) {
+        &__nav {
+            position: fixed;
+            top: 82px;
+            left: 0;
+            flex-direction: column;
+            width: 100%;
+            padding: 0 ($indent * 2);
+            background-color: $background-color-dark;
+            transform: translateY(-150%);
+            transition: .3s;
+            will-change: transform;
+        }
+        &__nav-item {
+            width: 100%;
+            height: 35px;
+            margin: 0;
+            border-bottom: 1px solid $footer-text-color;
+        }
+        &__nav-icon {
+            right: 0;
+        }
+        &__label {
+            @include flex(between, column);
+        }
+    }
+}

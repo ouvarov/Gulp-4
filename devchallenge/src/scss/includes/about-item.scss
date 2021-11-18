@@ -1,0 +1,63 @@
+.about-item {
+    position: relative;
+    width: 100%;
+    margin-bottom: $indent;
+    background-color: $white;
+    border-radius: 4px;
+    box-shadow: 0 1px 2px rgb(0 0 0 / 10%);
+
+    &__label {
+        display: block;
+        width: 100%;
+        padding: $indent ($indent-regular + $indent) 0;
+        cursor: pointer;
+    }
+    &__content {
+        margin-bottom: 0;
+    }
+    &__title {
+        @include font-style($rubik-medium, 15px, $grey-color, 20px);
+        display: block;
+        padding-bottom: $indent;
+    }
+    &__nav-icon {
+        position: absolute;
+        top: 15px;
+        right: 25px;
+        transform: rotate(-90deg);
+    }
+    &__content-wrap {
+        height: 0;
+        margin-bottom: $indent-large;
+        padding: 0 ($indent-regular + $indent);
+        overflow: hidden;
+        background-color: $white;
+    }
+    &__checkbox {
+        @include size(0);
+        position: absolute;
+        opacity: 0;
+        &:focus {
+            ~ .about-item {
+                &__label {
+                    outline: 2px solid $blue;
+                }
+            }
+        }
+        &:checked {
+            ~ .about-item {
+                &__label {
+                    background-color: $white;
+                    outline: none;
+                }
+                &__content-wrap {
+                    height: auto;
+                    padding-bottom: $indent-large;
+                }
+                &__nav-icon {
+                    transform: rotate(0);
+                }
+            }
+        }
+    }
+}

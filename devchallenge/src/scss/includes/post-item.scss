@@ -1,0 +1,30 @@
+.post-item {
+    display: block;
+    margin-bottom: $indent;
+
+    &:hover,
+    &:focus {
+        .post-item {
+            &__headline {
+                color: $blue;
+            }
+        }
+    }
+    &__figure {
+        @include flex;
+    }
+    &__img-wrap {
+        @include size(70px);
+        flex-shrink: 0;
+        margin-right: $indent;
+    }
+    &__headline {
+        @include font-style($rubik, 15px, $white, 21px);
+        margin-bottom: $indent-small;
+    }
+    &__text {
+        @include font-style($rubik, 12px, $footer-text-color, 18px);
+        display: block;
+        margin-bottom: $indent-regular;
+    }
+}

@@ -1,0 +1,23 @@
+.icon {
+    $icon-type: (
+        'down',
+        'twitter',
+        'facebook',
+        'pinterest',
+        'vimeo',
+        'instagram',
+        'map',
+        'phone',
+        'mail',
+        'mobile'
+    );
+
+    @include background;
+    @include size(34px);
+    display: block;
+    @each $type in $icon-type {
+        &--#{$type} {
+            background-image: url('../images/sprite/sprite.svg##{$type}');
+        }
+    }
+}

@@ -1,0 +1,120 @@
+<footer class="footer">
+    <div class="footer__wrap">
+        <nav class="footer__row">
+            <h3 class="footer__headline headline">Popular Posts</h3>
+            @@loop('../includes/post-item.html',[
+            {
+            "icon": "magna",
+            "headline": "Magna Mollis Ultricies Mauris",
+            "text": "12 Nov 2014"
+            },
+            {
+            "icon": "ornanre",
+            "headline": "Ornare Nullam Risus Cursus",
+            "text": "12 Nov 2014"
+            },
+            {
+            "icon": "euismod",
+            "headline": "Euismod Nullam Fusce Dapibus",
+            "text": "12 Nov 2014"
+            }
+            ])
+        </nav>
+        <div class="footer__row">
+            <h3 class="footer__headline headline">About Us</h3>
+            <p class="footer__text text">
+                Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Cras justo odio, dapibus ac facilisis in, egestas eget quam euismod mollis. Consectetur adipiscing elit malesuada magna.
+            </p>
+            <h3 class="footer__headline headline">Elsewhere</h3>
+            <nav class="footer__socials-wrap">
+                @@loop('../includes/social-icon.html', [
+                {
+                "type": "twitter",
+                },
+                {
+                "type": "facebook",
+                },
+                {
+                "type": "pinterest",
+                },
+                {
+                "type": "vimeo",
+                },
+                {
+                "type": "instagram"
+                }
+                ]
+                )
+            </nav>
+        </div>
+        <div class="footer__row">
+            <h3 class="footer__headline headline">Get in Touch</h3>
+            <p class="footer__text text">
+                Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Etiam porta sem malesuada magna mollis euismod. Praesent commodo cursus.
+            </p>
+            <nav class="footer__contact-wrap">
+                @@loop('../includes/contact-item.html',[
+                {
+                "link": "/",
+                "type": "map",
+                "text" : "Moonshine St. 14/05 Light City"
+                },
+                {
+                "link": "mailto:first.last@email.com",
+                "type": "mail",
+                "text" : "first.last@email.com"
+                },
+                {
+                "link": "tel:+00(123)4567890",
+                "type": "phone",
+                "text" : "+00 (123) 456 78 90"
+                },
+                {
+                "link": "tel:+80(547)455475",
+                "type": "mobile",
+                "text" : "+80 (547) 455 47 5"
+                }
+                ]
+                )
+            </nav>
+        </div>
+        <div class="footer__row">
+            <h3 class="footer__headline headline">Subscribe</h3>
+            <div class="footer__controls-wrap">
+                <input type="text" class="input footer__input" placeholder="Email Address">
+                @@include('../controls/button.html', {
+                "text": "Join",
+                "class": "footer__button",
+                "type": "secondary"
+                }
+                )
+            </div>
+            <h3 class="footer__headline headline">Categories</h3>
+            <ul class="footer__list">
+                <li class="footer__item">
+                    <a href="/" class="footer__text footer__text--link text">
+                        Lifestyle (21)
+                    </a>
+                </li>
+                <li class="footer__item">
+                    <a href="/" class="footer__text footer__text--link text">
+                        Photography (19)
+                    </a>
+                </li>
+                <li class="footer__item">
+                    <a href="/" class="footer__text footer__text--link text">
+                        Journal (16)
+                    </a>
+                </li>
+                <li class="footer__item">
+                    <a href="/" class="footer__text footer__text--link text">
+                        Works (7)
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <p class="footer__certificate text">
+        © 2017 crea;tink. All rights reserved. Theme by elemis.
+    </p>
+</footer>

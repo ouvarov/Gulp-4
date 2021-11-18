@@ -1,0 +1,38 @@
+// z-index
+$index-light-content: 1;
+$index-content: 5;
+$index-extra-content: 10;
+$index-light-main: 15;
+$index-main: 20;
+$index-extra-main: 25;
+$index-light-higher: 30;
+$index-higher: 35;
+$index-extra-higher: 40;
+$index-over-all: 100;
+
+//fonts
+$rubik: 'Rubik-400', sans-serif;
+$rubik-light: 'Rubik-300', sans-serif;
+$rubik-medium: 'Rubik-500', sans-serif;
+
+.headline {
+    @include font-style($rubik, 17px, $grey-color, 24px);
+    margin-bottom: $indent-regular;
+}
+.text {
+    @include font-style($rubik, 14px, $text-color, 26px);
+    margin-bottom: $indent-large;
+}
+
+.title {
+    @include font-style($rubik-light, 34px, $grey-color, 44px);
+    margin-bottom: $indent;
+}
+
+.subtitle {
+    @include font-style($rubik-light, 22px, $text-color, 34px);
+    margin-bottom: $indent-large;
+}
+.app {
+    background-color: $background-color;
+}

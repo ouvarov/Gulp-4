@@ -1,0 +1,12 @@
+.features-item {
+    @include flex;
+    margin-bottom: $indent-regular;
+    padding: 0 $indent;
+
+    &__figure {
+        @include size(70px);
+        flex-shrink: 0;
+        box-sizing: content-box;
+        padding-right: $indent;
+    }
+}

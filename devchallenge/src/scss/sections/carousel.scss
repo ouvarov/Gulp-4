@@ -1,0 +1,12 @@
+.carousel {
+    @extend %section-indent;
+    background-color: $background-color-section;
+
+    &__wrap {
+        @extend %container;
+    }
+    &__list {
+        @include flex($align-items: center);
+        overflow: hidden;
+    }
+}

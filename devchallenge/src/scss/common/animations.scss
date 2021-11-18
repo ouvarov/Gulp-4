@@ -1,0 +1,58 @@
+@keyframes move-figure {
+    from {
+        @include visibility(hidden, 0);
+        transform: translateY(50px);
+    }
+    to {
+        @include visibility;
+        transform: translateY(5px);
+    }
+}
+
+@keyframes move-button {
+    from {
+        @include visibility(hidden, 0);
+        transform: translateY(100px);
+    }
+    to {
+        @include visibility;
+        transform: translateY(0);
+    }
+}
+
+@keyframes move-title {
+    from {
+        @include visibility(hidden, 0);
+        transform: translateX(-100px);
+    }
+    to {
+        @include visibility;
+        transform: translateX(0);
+    }
+}
+
+@keyframes move-content {
+    from {
+        @include visibility(hidden, 0);
+        transform: translateX(100px);
+    }
+    to {
+        @include visibility;
+        transform: translateX(0);
+    }
+}
+
+@keyframes active-button {
+    0% {
+        @include visibility(hidden, 0);
+        transform: translate(-50%, -50%) scale(0);
+    }
+    50% {
+        @include visibility;
+        transform: translate(-50%, -50%) scale(1);
+    }
+    100% {
+        @include visibility(hidden, 0);
+        transform: translate(-50%, -50%) scale(1);
+    }
+}

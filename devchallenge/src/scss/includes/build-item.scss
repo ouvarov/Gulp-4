@@ -1,0 +1,18 @@
+.build-item {
+    width: 100%;
+    max-width: 300px;
+    padding: 0 $indent;
+    text-align: center;
+
+    &__figure {
+        @include size(70px);
+        margin: 0 auto $indent-large;
+    }
+
+    @include respond-to(1023) {
+        max-width: 80%;
+    }
+    @include respond-to(767) {
+        max-width: 100%;
+    }
+}

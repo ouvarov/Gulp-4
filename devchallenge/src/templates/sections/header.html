@@ -1,0 +1,71 @@
+<header class="header">
+    <div class="header__wrap">
+        <a href="/" class="header__logo-wrap">
+            <img src="./images/logo.png" alt="logo" class="header__logo">
+        </a>
+        <input type="checkbox" id="hamburger" class="header__checkbox">
+        <label for="hamburger" class="header__label">
+            @@for(var i = 0; i < 3; i++) {
+                <span class="header__hamburger-item"></span>
+            }
+        </label>
+        <nav class="header__nav">
+            <a href="/" class="header__nav-item">
+                Home
+                <i class="header__nav-icon">
+                    @@include('../includes/down-icon.html',{
+                    "color": "currentColor"
+                    })
+                </i>
+            </a>
+            <a href="/" class="header__nav-item">
+                Features
+                <i class="header__nav-icon">
+                    @@include('../includes/down-icon.html',{
+                    "color": "currentColor"
+                    })
+                </i>
+            </a>
+            <a href="/" class="header__nav-item">
+                Elements
+                <i class="header__nav-icon">
+                    @@include('../includes/down-icon.html',{
+                    "color": "currentColor"
+                    })
+                </i>
+            </a>
+            <a href="/" class="header__nav-item">
+                Shop
+                <i class="header__nav-icon">
+                    @@include('../includes/down-icon.html',{
+                    "color": "currentColor"
+                    })
+                </i>
+            </a>
+            <a href="/" class="header__nav-item">
+                Portfolio
+                <i class="header__nav-icon">
+                    @@include('../includes/down-icon.html',{
+                    "color": "currentColor"
+                    })
+                </i>
+            </a>
+            <a href="/" class="header__nav-item">
+                Pages
+                <i class="header__nav-icon">
+                    @@include('../includes/down-icon.html',{
+                    "color": "currentColor"
+                    })
+                </i>
+            </a>
+            <a href="/" class="header__nav-item">
+                Blog
+                <i class="header__nav-icon">
+                    @@include('../includes/down-icon.html',{
+                    "color": "currentColor"
+                    })
+                </i>
+            </a>
+        </nav>
+    </div>
+</header>

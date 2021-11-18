@@ -1,0 +1,18 @@
+.build {
+    @extend %section-indent;
+    text-align: center;
+
+    &__wrap {
+        @extend %container;
+    }
+    &__list {
+        @include flex(center);
+        margin-top: ($indent-large * 2);
+    }
+
+    @include respond-to(1023) {
+        &__list {
+            flex-direction: column;
+        }
+    }
+}

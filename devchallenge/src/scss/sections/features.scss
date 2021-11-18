@@ -1,0 +1,37 @@
+.features {
+    @extend %section-indent;
+    text-align: center;
+    background-color: $background-color-section;
+
+    &__wrap {
+        @extend %container;
+    }
+    &__content {
+        @include flex(center);
+    }
+    &__figure {
+        width: 66.6%;
+        padding: ($indent * 2) $indent 0;
+    }
+    &__list {
+        width: 33.3%;
+        margin-top: ($indent * 4);
+        text-align: left;
+    }
+
+    @include respond-to(1023) {
+        &__content {
+            flex-direction: column;
+        }
+        &__list,
+        &__figure {
+            width: 80%;
+        }
+    }
+    @include respond-to(767) {
+        &__list,
+        &__figure {
+            width: 100%;
+        }
+    }
+}

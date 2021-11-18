@@ -1,0 +1,96 @@
+.comment-item {
+    @include flex;
+    width: 50%;
+    margin-bottom: ($indent * 2);
+    padding: 0 $indent;
+
+    &:nth-of-type(odd) {
+        flex-direction: row-reverse;
+        .comment-item {
+            &__wrap {
+                margin: 0 0 0 ($indent-regular + $indent);
+                &:after {
+                    right: auto;
+                    left: -10px;
+                    transform: rotate(180deg);
+                }
+            }
+        }
+    }
+    &__img {
+        @include size(80px);
+        display: block;
+        margin: 0 auto $indent-regular;
+        overflow: hidden;
+        border-radius: 50%;
+    }
+    &__wrap {
+        @include flex(center);
+        margin-right: ($indent-regular +$indent);
+        padding: ($indent * 2);
+        background-color: $white;
+        border-radius: 4px;
+        filter: drop-shadow(0 1px 1px rgba(0, 0, 0, .1));
+        transition: .3s;
+        &:hover {
+            filter: drop-shadow(0 1px 8px rgba(0, 0, 0, .1));
+        }
+        @include pseudo-element {
+            top: 30px;
+            right: -10px;
+            border-top: 10px solid transparent;
+            border-bottom: 10px solid transparent;
+            border-left: 10px solid $white;
+        }
+    }
+    &__quote {
+        @include font-style($rubik, 15px, $text-color, 25px);
+    }
+    &__user-wrap {
+        flex-shrink: 0;
+        text-align: center;
+    }
+    &__position {
+        display: block;
+    }
+    &__user-info {
+        margin: 0;
+    }
+
+    @include respond-to(1023) {
+        width: 100%;
+    }
+    @include respond-to(767) {
+        flex-direction: column-reverse;
+        justify-content: flex-start;
+        padding: 0;
+        &:nth-of-type(odd) {
+            flex-direction: column-reverse;
+            .comment-item {
+                &__wrap {
+                    margin: $indent-large 0 0 0;
+                    &:after {
+                        top: -14px;
+                        left: 30px;
+                        transform: rotate(-90deg);
+                    }
+                }
+            }
+        }
+        &__img {
+            margin: 0 0 $indent-regular 0;
+        }
+        &__user-wrap {
+            text-align: left;
+        }
+        &__wrap {
+            margin: $indent-large 0 0 0;
+            &:after {
+                top: -14px;
+                right: auto;
+                left: 30px;
+                transform: rotate(-90deg);
+            }
+        }
+    }
+}

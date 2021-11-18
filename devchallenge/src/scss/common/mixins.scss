@@ -1,0 +1,139 @@
+@mixin truncate-text($line-height: normal) {
+    overflow: hidden;
+    line-height: $line-height;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+@mixin font-style($family, $size: inherit, $color: inherit, $line-height: null) {
+    color: $color;
+    font-size: $size;
+    font-family: $family;
+    line-height: $line-height;
+}
+
+@mixin visibility($visibility: visible, $opacity: 1) {
+    visibility: $visibility;
+    opacity: $opacity;
+}
+
+@mixin size($size) {
+    width: $size;
+    height: $size;
+}
+
+@mixin placeholder-color($color) {
+    &::-webkit-input-placeholder {
+        color: $color;
+    }
+    &::-moz-placeholder {
+        color: $color;
+        opacity: 1;
+    }
+    &:-moz-placeholder {
+        color: $color;
+        opacity: 1;
+    }
+    &:-ms-input-placeholder {
+        color: $color;
+    }
+}
+
+@mixin pseudo-element($pseudo-element: after, $content: '', $position: absolute) {
+    @if ($pseudo-element == all) {
+        &:after,
+        &:before {
+            position: $position;
+            display: block;
+            content: $content;
+            @content;
+        }
+    }
+    @else {
+        &:#{$pseudo-element} {
+            position: $position;
+            display: block;
+            content: $content;
+            @content;
+        }
+    }
+}
+
+@mixin placeholder-font-family($font-family) {
+    &::-webkit-input-placeholder {
+        font-family: $font-family;
+    }
+    &::-moz-placeholder {
+        font-family: $font-family;
+    }
+    &:-ms-input-placeholder {
+        font-family: $font-family;
+    }
+}
+
+@mixin background($icon: null, $size: cover, $position: center, $color: transparent, $repeat: no-repeat) {
+    @if ($icon == null) {
+        background: $color $position / $size $repeat;
+    }
+
+    @else {
+        background: $color url('../images/#{$icon}') $position / $size $repeat;
+    }
+}
+
+@mixin flex ($type: default, $direction: row, $display: flex, $align-items: null, $justify-content: null) {
+    display: $display;
+    @if $type == flex-start {
+        align-items: flex-start;
+        justify-content: flex-start;
+    }
+    @else if $type == center {
+        align-items: center;
+        justify-content: center;
+    }
+    @else if $type == between {
+        align-items: center;
+        justify-content: space-between;
+    }
+    @if $direction == column {
+        flex-direction: column;
+    }
+    flex-direction: $direction;
+    align-items: $align-items;
+    justify-content: $justify-content;
+}
+
+@mixin button-background($color, $hover-color) {
+    position: relative;
+    background-color: $color;
+    &:hover {
+        background-color: $hover-color;
+    }
+    &:focus {
+        background: darken($hover-color, 40%);
+    }
+    &:active {
+        &:before {
+            transform: translate(-50%, -50%) scale(0);
+            opacity: .32;
+            transition: transform 0s;
+        }
+    }
+    @include pseudo-element(before) {
+        @extend %position-center;
+        z-index: -1;
+        width: 100%;
+        padding-top: 100%;
+        background-color: $color;
+        border-radius: 50%;
+        transform: translate(-50%, -50%) scale(1);
+        opacity: 0;
+        transition: opacity 1s, transform .5s;
+    }
+}
+
+@mixin respond-to($width) {
+    @media (max-width: $width + px) {
+        @content;
+    }
+}

@@ -1,0 +1,28 @@
+.comment {
+    @extend %section-indent;
+
+    &__wrap {
+        @extend %container;
+    }
+    &__title {
+        text-align: center;
+    }
+    &__items-wrap {
+        @include flex(center);
+        flex-wrap: wrap;
+        padding-top: $indent-large;
+    }
+
+    @include respond-to(1023) {
+        &__items-wrap {
+            flex-direction: column;
+            width: 80%;
+            margin: 0 auto;
+        }
+    }
+    @include respond-to(767) {
+        &__items-wrap {
+            width: 100%;
+        }
+    }
+}
